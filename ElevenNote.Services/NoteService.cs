@@ -22,6 +22,7 @@ namespace ElevenNote.Services
             var entity = new Note()
             {
                 OwnerId = _userId,
+                Title = model.Title,
                 Content = model.Content,
                 CreatedUtc = DateTimeOffset.Now
             };
@@ -46,6 +47,23 @@ namespace ElevenNote.Services
                         CreatedUtc = e.CreatedUtc,
                     });
                 return query.ToArray();
+            }
+        }
+
+        public NoteDetail GetNoteById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var enetity = ctx.Notes
+                    .Single(e => e.NoteId == id && e.OwnerId == _userId);
+                return new NoteDetail
+                {
+                    NoteId = enetity.NoteId,
+                    Title = enetity.Title,
+                    Content = enetity.Content,
+                    CreatedUtc = enetity.CreatedUtc,
+                    ModifiedUtc = enetity.ModifiedUtc
+                };
             }
         }
     }
