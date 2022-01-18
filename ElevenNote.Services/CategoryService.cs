@@ -56,7 +56,6 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 Category entity = ctx.Categories.Include(e => e.Notes).Where(e => e.Id == id && e.OwnerId == _userId).Single();
-                   // .Single(e => e.Id == id && e.OwnerId == _userId);
                 return new CategoryDetail()
                 {
                     CategoryId = entity.Id,
