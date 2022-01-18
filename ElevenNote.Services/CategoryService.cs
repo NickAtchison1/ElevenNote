@@ -45,7 +45,6 @@ namespace ElevenNote.Services
                         Category = e.Name
 
 
-
                     });
                 return query.ToList();
             }
