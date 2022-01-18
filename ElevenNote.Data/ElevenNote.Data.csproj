@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -84,8 +87,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="EntityTypeConfiguraton.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202201132124323_InitialCreate.cs" />
+    <Compile Include="Migrations\202201132124323_InitialCreate.designer.cs">
+      <DependentUpon>202201132124323_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141654123_InitialCommit.cs" />
+    <Compile Include="Migrations\202201141654123_InitialCommit.designer.cs">
+      <DependentUpon>202201141654123_InitialCommit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141716580_FKUpdateOnNote.cs" />
+    <Compile Include="Migrations\202201141716580_FKUpdateOnNote.designer.cs">
+      <DependentUpon>202201141716580_FKUpdateOnNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141720158_FKeyOnNotetable.cs" />
+    <Compile Include="Migrations\202201141720158_FKeyOnNotetable.designer.cs">
+      <DependentUpon>202201141720158_FKeyOnNotetable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141727338_DropFirstCategoryTable.cs" />
+    <Compile Include="Migrations\202201141727338_DropFirstCategoryTable.designer.cs">
+      <DependentUpon>202201141727338_DropFirstCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141749543_AddNewCategoryTable.cs" />
+    <Compile Include="Migrations\202201141749543_AddNewCategoryTable.designer.cs">
+      <DependentUpon>202201141749543_AddNewCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141821066_nullableFKInNotes.cs" />
+    <Compile Include="Migrations\202201141821066_nullableFKInNotes.designer.cs">
+      <DependentUpon>202201141821066_nullableFKInNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141921458_addOwnerToCategory.cs" />
+    <Compile Include="Migrations\202201141921458_addOwnerToCategory.designer.cs">
+      <DependentUpon>202201141921458_addOwnerToCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201182006211_smallChange.cs" />
+    <Compile Include="Migrations\202201182006211_smallChange.designer.cs">
+      <DependentUpon>202201182006211_smallChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,5 +134,42 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202201132124323_InitialCreate.resx">
+      <DependentUpon>202201132124323_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141654123_InitialCommit.resx">
+      <DependentUpon>202201141654123_InitialCommit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141716580_FKUpdateOnNote.resx">
+      <DependentUpon>202201141716580_FKUpdateOnNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141720158_FKeyOnNotetable.resx">
+      <DependentUpon>202201141720158_FKeyOnNotetable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141727338_DropFirstCategoryTable.resx">
+      <DependentUpon>202201141727338_DropFirstCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141749543_AddNewCategoryTable.resx">
+      <DependentUpon>202201141749543_AddNewCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141821066_nullableFKInNotes.resx">
+      <DependentUpon>202201141821066_nullableFKInNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141921458_addOwnerToCategory.resx">
+      <DependentUpon>202201141921458_addOwnerToCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201182006211_smallChange.resx">
+      <DependentUpon>202201182006211_smallChange.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>
